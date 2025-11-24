@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D K S Nishantha Construction | Lellopitiya</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(251, 191, 36, 0.2);
+        }
+        
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .animated-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(251, 191, 36, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .stat-card {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .stat-card:hover::before {
+            left: 100%;
+        }
+        
+        .nav-link {
+            position: relative;
+            padding-bottom: 4px;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #fbbf24, #f59e0b);
+            transition: all 0.3s;
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .pulse-dot {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-50 glass-effect">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="text-2xl font-bold">
+                    <span class="gradient-text">DKS</span>
+                    <span class="text-white ml-1">Construction</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-gray-300 hover:text-amber-400">Home</a>
+                    <a href="#about" class="nav-link text-gray-300 hover:text-amber-400">About</a>
+                    <a href="#services" class="nav-link text-gray-300 hover:text-amber-400">Services</a>
+                    <a href="#credentials" class="nav-link text-gray-300 hover:text-amber-400">Credentials</a>
+                    <a href="#contact" class="nav-link text-gray-300 hover:text-amber-400">Contact</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-4">
+                <a href="#home" class="block text-gray-300 hover:text-amber-400">Home</a>
+                <a href="#about" class="block text-gray-300 hover:text-amber-400">About</a>
+                <a href="#services" class="block text-gray-300 hover:text-amber-400">Services</a>
+                <a href="#credentials" class="block text-gray-300 hover:text-amber-400">Credentials</a>
+                <a href="#contact" class="block text-gray-300 hover:text-amber-400">Contact</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-6">
+        <div class="max-w-7xl mx-auto text-center fade-in">
+            <div class="inline-flex items-center px-4 py-2 rounded-full glass-effect mb-6">
+                <span class="w-2 h-2 bg-amber-400 rounded-full mr-2 pulse-dot"></span>
+                <span class="text-sm text-gray-300">RDA Registered Contractor</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                Building Tomorrow's<br/>
+                <span class="gradient-text">Infrastructure Today</span>
+            </h1>
+            <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
+                Premier construction services in Sabaragamuwa Province. Specializing in civil construction and public infrastructure projects.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#contact" class="px-8 py-4 bg-gradient-to-r from-amber-400 to-amber-600 text-black font-semibold rounded-lg hover:scale-105 transition-all">
+                    Start Your Project
+                </a>
+                <a href="#about" class="px-8 py-4 glass-effect text-white font-semibold rounded-lg hover:bg-white hover:bg-opacity-10 transition-all">
+                    Learn More
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Stats Section -->
+    <section class="py-20 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="stat-card glass-effect rounded-2xl p-8 text-center hover-lift">
+                <div class="text-5xl font-bold gradient-text mb-2">C6</div>
+                <div class="text-gray-400">CIDA Grade</div>
+            </div>
+            <div class="stat-card glass-effect rounded-2xl p-8 text-center hover-lift">
+                <div class="text-5xl font-bold gradient-text mb-2">RDA</div>
+                <div class="text-gray-400">Certified Contractor</div>
+            </div>
+            <div class="stat-card glass-effect rounded-2xl p-8 text-center hover-lift">
+                <div class="text-5xl font-bold gradient-text mb-2">Local</div>
+                <div class="text-gray-400">Regional Expertise</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    About <span class="gradient-text">DKS Construction</span>
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">
+                    Your trusted construction partner in Ratnapura District
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="glass-effect rounded-2xl p-8 hover-lift">
+                    <h3 class="text-2xl font-bold mb-4 gradient-text">Who We Are</h3>
+                    <p class="text-gray-400 leading-relaxed mb-4">
+                        D K S Nishantha Construction is a registered contractor based in Lellopitiya, Ratnapura, specializing in civil construction and infrastructure development across the Sabaragamuwa Province.
+                    </p>
+                    <p class="text-gray-400 leading-relaxed">
+                        As an RDA-registered contractor with CIDA C6 grade certification, we bring legitimacy, expertise, and local knowledge to every project we undertake.
+                    </p>
+                </div>
+                
+                <div class="glass-effect rounded-2xl p-8 hover-lift">
+                    <h3 class="text-2xl font-bold mb-4 gradient-text">Our Approach</h3>
+                    <p class="text-gray-400 leading-relaxed mb-4">
+                        We combine modern construction techniques with deep understanding of local terrain and requirements, ensuring projects are delivered with quality and efficiency.
+                    </p>
+                    <p class="text-gray-400 leading-relaxed">
+                        Our strategic location in Lellopitiya positions us perfectly to serve the construction needs of Ratnapura District and surrounding areas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section id="services" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    Our <span class="gradient-text">Services</span>
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">
+                    Comprehensive construction solutions tailored to your needs
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="service-card glass-effect rounded-2xl p-8 hover-lift">
+                    <div class="service-icon">
+                        <svg class="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Civil Construction</h3>
+                    <p class="text-gray-400">
+                        Complete civil construction services including buildings, structures, and community facilities with attention to detail and quality.
+                    </p>
+                </div>
+                
+                <div class="service-card glass-effect rounded-2xl p-8 hover-lift">
+                    <div class="service-icon">
+                        <svg class="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Infrastructure Projects</h3>
+                    <p class="text-gray-400">
+                        Road development, public works, and small to medium-scale infrastructure projects in collaboration with government agencies.
+                    </p>
+                </div>
+                
+                <div class="service-card glass-effect rounded-2xl p-8 hover-lift">
+                    <div class="service-icon">
+                        <svg class="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Subcontracting Works</h3>
+                    <p class="text-gray-400">
+                        Professional subcontracting services for larger construction firms, leveraging our local expertise and RDA registration.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Credentials Section -->
+    <section id="credentials" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    <span class="gradient-text">Credentials</span> & Registration
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">
+                    Officially registered and certified for your peace of mind
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="glass-effect rounded-2xl p-8 hover-lift">
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 rounded-lg bg-amber-400 bg-opacity-20 flex items-center justify-center mr-4 flex-shrink-0">
+                            <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">RDA Registration</h3>
+                            <p class="text-gray-400 mb-2">Road Development Authority Registered</p>
+                            <p class="text-amber-400 font-mono">Register No: RDASR 0368</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-effect rounded-2xl p-8 hover-lift">
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 rounded-lg bg-amber-400 bg-opacity-20 flex items-center justify-center mr-4 flex-shrink-0">
+                            <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">CIDA Certification</h3>
+                            <p class="text-gray-400 mb-2">Construction Industry Development Authority</p>
+                            <p class="text-amber-400 font-mono">Grade: C6</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-effect rounded-2xl p-8 hover-lift">
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 rounded-lg bg-amber-400 bg-opacity-20 flex items-center justify-center mr-4 flex-shrink-0">
+                            <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Business Registration</h3>
+                            <p class="text-gray-400 mb-2">Officially Registered Business</p>
+                            <p class="text-amber-400 font-mono">Reg No: BG 02266</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-effect rounded-2xl p-8 hover-lift">
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 rounded-lg bg-amber-400 bg-opacity-20 flex items-center justify-center mr-4 flex-shrink-0">
+                            <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Classification</h3>
+                            <p class="text-gray-400 mb-2">Specialized Category</p>
+                            <p class="text-amber-400 font-mono">B-Subcontractors (Works)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    Get In <span class="gradient-text">Touch</span>
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">
+                    Ready to start your project? Contact us today for a consultation
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                    <div class="glass-effect rounded-2xl p-6 hover-lift">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 rounded-lg bg-amber-400 bg-opacity-20 flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold mb-2">Address</h3>
+                                <p class="text-gray-400">No. 2A/1, Hiriliyadda<br/>Lellopitiya, Rathnapura<br/>Sabaragamuwa Province, Sri Lanka</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-effect rounded-2xl p-6 hover-lift">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 rounded-lg bg-amber-400 bg-opacity-20 flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold mb-2">Phone</h3>
+                                <p class="text-gray-400">071-256-0561<br/>071-523-6803</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-effect rounded-2xl p-6 hover-lift">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 rounded-lg bg-amber-400 bg-opacity-20 flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold mb-2">Email</h3>
+                                <p class="text-gray-400">dksnishanthac@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-effect rounded-2xl p-8">
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Name</label>
+                            <input type="text" class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-5 border border-white border-opacity-10 focus:border-amber-400 focus:outline-none transition-all" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Email</label>
+                            <input type="email" class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-5 border border-white border-opacity-10 focus:border-amber-400 focus:outline-none transition-all" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Message</label>
+                            <textarea rows="4" class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-5 border border-white border-opacity-10 focus:border-amber-400 focus:outline-none transition-all" required></textarea>
+                        </div>
+                        <button type="submit" class="w-full px-8 py-4 bg-gradient-to-r from-amber-400 to-amber-600 text-black font-semibold rounded-lg hover:scale-105 transition-all">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-12 px-6 border-t border-white border-opacity-10">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="text-2xl font-bold mb-4">
+                <span class="gradient-text">DKS</span>
+                <span class="text-white ml-1">Construction</span>
+            </div>
+            <p class="text-gray-400 mb-4">Building excellence in Sabaragamuwa Province</p>
+            <p class="text-gray-500 text-sm">© 2024 D K S Nishantha Construction. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
